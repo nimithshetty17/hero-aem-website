@@ -1,18 +1,27 @@
 footer {
-  padding: 2rem;
-  background-color: var(--light-color);
+  padding: 66px 70px 0;
+  background-color: var(--hero-dark-grey);
   font-size: var(--body-font-size-s);
 }
 
-footer .footer {
+/* footer .footer {
   max-width: 1200px;
   margin: auto;
-}
+} */
 
 footer .footer p {
   margin: 0;
 }
 
-footer .footer-links {
+.footer-links > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-links > div:first-of-type > div {
+  max-width: 16.67%;
+}
+
+.footer-links > div:last-of-type > div {
   display: flex;
 }
