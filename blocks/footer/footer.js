@@ -21,36 +21,19 @@ export default async function decorate(block) {
   const footerLinks1 = footer.querySelectorAll(
     ".footer-links > div:first-of-type p"
   );
+  buttonClassRemover(footerLinks1);
 
   const footerLinks2 = footer.querySelectorAll(
     ".footer-links > div:last-of-type p"
   );
-
-  console.log("footerLinks1: ", footerLinks1);
-
-  console.log("footerLinks2: ", footerLinks2);
-
-  footerLinks1.forEach((fLink) => {
-    fLink.classList.remove("button-container");
-
-    let linkAnchor = fLink.querySelector("a");
-    if (linkAnchor) {
-      linkAnchor.classList.remove("button");
-      linkAnchor.classList.add("footer-upper-link");
-    }
-  });
-
-  footerLinks2.forEach((fLink) => {
-    fLink.classList.remove("button-container");
-
-    let linkAnchor = fLink.querySelector("a");
-    if (linkAnchor) {
-      linkAnchor.classList.remove("button");
-      linkAnchor.classList.add("footer-lower-link");
-    }
-  });
+  buttonClassRemover(footerLinks2);
 
   block.append(footer);
-
-  console.log("main log: ", block, footer);
 }
+
+const buttonClassRemover = (listOfPara) => {
+  listOfPara.classList.remove("button-container");
+
+  let linkAnchor = listOfPara.querySelector("a");
+  if (linkAnchor) linkAnchor.classList.remove("button");
+};
