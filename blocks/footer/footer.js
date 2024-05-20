@@ -18,19 +18,33 @@ export default async function decorate(block) {
   const footer = document.createElement("div");
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
-  const footerLinks = footer.querySelectorAll(
+  const footerLinks1 = footer.querySelectorAll(
     ".footer-links > div:first-of-type p"
   );
 
-  footerLinks.forEach((fLink) => {
+  const footerLinks2 = footer.querySelectorAll(
+    ".footer-links > div:last-of-type p"
+  );
+
+  footerLinks1.forEach((fLink) => {
     fLink.classList.remove("button-container");
 
     let linkAnchor = fLink.querySelector("a");
     linkAnchor.classList.remove("button");
-    // linkAnchor.classList.add("footer-upper-link");
+    linkAnchor.classList.add("footer-upper-link");
   });
 
-  console.log("footerLinks: ", footerLinks);
+  console.log("footerLinks1: ", footerLinks1);
+
+  footerLinks2.forEach((fLink) => {
+    fLink.classList.remove("button-container");
+
+    let linkAnchor = fLink.querySelector("a");
+    linkAnchor.classList.remove("button");
+    linkAnchor.classList.add("footer-lower-link");
+  });
+
+  console.log("footerLinks2: ", footerLinks2);
 
   block.append(footer);
 
