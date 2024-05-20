@@ -12,3 +12,7 @@ footer .footer {
 footer .footer p {
   margin: 0;
 }
+
+footer .footer-links {
+  display: flex;
+}
