@@ -26,6 +26,10 @@ export default async function decorate(block) {
     ".footer-links > div:last-of-type p"
   );
 
+  console.log("footerLinks1: ", footerLinks1);
+
+  console.log("footerLinks2: ", footerLinks2);
+
   footerLinks1.forEach((fLink) => {
     fLink.classList.remove("button-container");
 
@@ -34,8 +38,6 @@ export default async function decorate(block) {
     linkAnchor.classList.add("footer-upper-link");
   });
 
-  console.log("footerLinks1: ", footerLinks1);
-
   footerLinks2.forEach((fLink) => {
     fLink.classList.remove("button-container");
 
@@ -43,8 +45,6 @@ export default async function decorate(block) {
     linkAnchor.classList.remove("button");
     linkAnchor.classList.add("footer-lower-link");
   });
-
-  console.log("footerLinks2: ", footerLinks2);
 
   block.append(footer);
 

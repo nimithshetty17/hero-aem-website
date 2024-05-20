@@ -38,6 +38,10 @@ footer .footer p {
   }
 }
 
+.footer-links > div:nth-of-type(2) {
+  padding: 55px 0 48px;
+}
+
 .footer-links > div:nth-of-type(2) > div > p {
   display: flex;
   align-items: center;
