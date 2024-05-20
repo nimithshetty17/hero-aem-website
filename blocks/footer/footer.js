@@ -34,16 +34,20 @@ export default async function decorate(block) {
     fLink.classList.remove("button-container");
 
     let linkAnchor = fLink.querySelector("a");
-    linkAnchor.classList.remove("button");
-    linkAnchor.classList.add("footer-upper-link");
+    if (linkAnchor) {
+      linkAnchor.classList.remove("button");
+      linkAnchor.classList.add("footer-upper-link");
+    }
   });
 
   footerLinks2.forEach((fLink) => {
     fLink.classList.remove("button-container");
 
     let linkAnchor = fLink.querySelector("a");
-    linkAnchor.classList.remove("button");
-    linkAnchor.classList.add("footer-lower-link");
+    if (linkAnchor) {
+      linkAnchor.classList.remove("button");
+      linkAnchor.classList.add("footer-lower-link");
+    }
   });
 
   block.append(footer);
