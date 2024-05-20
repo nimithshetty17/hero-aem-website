@@ -32,8 +32,10 @@ export default async function decorate(block) {
 }
 
 const buttonClassRemover = (listOfPara) => {
-  listOfPara.classList.remove("button-container");
+  listOfPara.forEach((fLink) => {
+    fLink.classList.remove("button-container");
 
-  let linkAnchor = listOfPara.querySelector("a");
-  if (linkAnchor) linkAnchor.classList.remove("button");
+    let linkAnchor = fLink.querySelector("a");
+    if (linkAnchor) linkAnchor.classList.remove("button");
+  });
 };
