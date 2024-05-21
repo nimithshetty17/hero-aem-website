@@ -6,5 +6,15 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 export default async function decorate(block) {
-    console.log('block: ', block);
+    const fragment = await loadFragment('/header-data-new');
+
+    block.textContent = '';
+    const newHeader = document.createElement('div');
+    while (fragment.firstElementChild) newHeader.append(fragment.firstElementChild);
+    console.log('newHeader: ', newHeader);
+
+    const headerTabs = newHeader.querySelector('.header-tabs');
+    console.log('headerTabs: ', headerTabs);
+
+    block.append(newHeader);
 }
