@@ -1,5 +1,8 @@
 footer {
-  padding: 66px 70px 0;
+  padding: 71px 15px 0;
+  @media (min-width: var(--breakpoint-tablet)) {
+    padding: 66px 70px 0;
+  }
   background-color: var(--hero-dark-grey);
   font-size: var(--body-font-size-s);
 }
@@ -16,8 +19,7 @@ footer .footer p {
   display: flex;
   justify-content: space-between;
 
-  a:any-link,
-  a:-webkit-any-link {
+  a:any-link {
     color: inherit !important;
   }
 }

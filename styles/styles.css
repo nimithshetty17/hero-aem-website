@@ -44,6 +44,12 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* Breakpoints */
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop-sm: 1024px;
+  --breakpoint-desktop-md: 1220px;
+  --breakpoint-desktop-lg: 1400px;
 }
 
 @font-face {
@@ -99,18 +105,23 @@ h6 {
 h1 {
   font-size: var(--heading-font-size-xxl);
 }
+
 h2 {
   font-size: var(--heading-font-size-xl);
 }
+
 h3 {
   font-size: var(--heading-font-size-l);
 }
+
 h4 {
   font-size: var(--heading-font-size-m);
 }
+
 h5 {
   font-size: var(--heading-font-size-s);
 }
+
 h6 {
   font-size: var(--heading-font-size-xs);
 }
