@@ -29,7 +29,7 @@ const buttonClassRemover = (listOfPara) => {
     listOfPara.forEach((fLink) => {
       fLink.classList.remove("button-container");
 
-      let linkAnchor = fLink.querySelector("a");
+      const linkAnchor = fLink.querySelector("a");
       if (linkAnchor) linkAnchor.classList.remove("button");
     });
   }
