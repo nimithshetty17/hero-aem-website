@@ -5,6 +5,18 @@ import { loadFragment } from '../fragment/fragment.js';
  * loads and decorates the footer
  * @param {Element} block The footer block element
  */
+
+const buttonClassRemover = (listOfPara) => {
+  if (listOfPara) {
+    listOfPara.forEach((fLink) => {
+      fLink.classList.remove('button-container');
+
+      const linkAnchor = fLink.querySelector('a');
+      if (linkAnchor) linkAnchor.classList.remove('button');
+    });
+  }
+};
+
 export default async function decorate(block) {
   // load footer as fragment
   const footerMeta = getMetadata('footer');
@@ -24,13 +36,3 @@ export default async function decorate(block) {
   block.append(footer);
 }
 
-const buttonClassRemover = (listOfPara) => {
-  if (listOfPara) {
-    listOfPara.forEach((fLink) => {
-      fLink.classList.remove('button-container');
-
-      const linkAnchor = fLink.querySelector('a');
-      if (linkAnchor) linkAnchor.classList.remove('button');
-    });
-  }
-};
