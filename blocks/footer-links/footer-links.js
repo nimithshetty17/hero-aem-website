@@ -10,7 +10,6 @@ const buttonClassRemover = (listOfPara) => {
 };
 
 export default async function decorate(block) {
-    console.log('footer-link-block ', block);
   const footerLinks = block.querySelectorAll(".footer-links > div p");
   buttonClassRemover(footerLinks);
 }
