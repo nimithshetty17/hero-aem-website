@@ -6,17 +6,6 @@ import { loadFragment } from '../fragment/fragment.js';
  * @param {Element} block The footer block element
  */
 
-const buttonClassRemover = (listOfPara) => {
-  if (listOfPara) {
-    listOfPara.forEach((fLink) => {
-      fLink.classList.remove('button-container');
-
-      const linkAnchor = fLink.querySelector('a');
-      if (linkAnchor) linkAnchor.classList.remove('button');
-    });
-  }
-};
-
 export default async function decorate(block) {
   // load footer as fragment
   const footerMeta = getMetadata('footer');
@@ -29,9 +18,6 @@ export default async function decorate(block) {
   block.textContent = '';
   const footer = document.createElement('div');
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
-
-  const footerLinks = footer.querySelectorAll('.footer-links > div p');
-  buttonClassRemover(footerLinks);
 
   block.append(footer);
 }
