@@ -8,7 +8,7 @@ function closeOnEscape(e) {
   if (e.code === 'Escape') {
     const nav = document.getElementById('nav');
     const navSections = nav.querySelector('.nav-sections');
-    const navSectionExpanded = navSections.querySelector('[aria-expanded="true"]');
+    const navSectionExpanded = navSections.querySelector("[aria-expanded='true']");
     if (navSectionExpanded && isDesktop.matches) {
       // eslint-disable-next-line no-use-before-define
       toggleAllNavSections(navSections);
@@ -92,44 +92,44 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  */
 export default async function decorate(block) {
   // load nav as fragment
-  const navMeta = getMetadata("nav");
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : "/nav";
+  const navMeta = getMetadata('nav');
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
-  block.textContent = "";
-  const nav = document.createElement("nav");
-  nav.id = "nav";
+  block.textContent = '';
+  const nav = document.createElement('nav');
+  nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  const classes = ["brand", "sections", "tools"];
+  const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
   });
 
-  const navBrand = nav.querySelector(".nav-brand");
-  const brandLink = navBrand.querySelector(".button");
+  const navBrand = nav.querySelector('.nav-brand');
+  const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
-    brandLink.className = "";
-    brandLink.closest(".button-container").className = "";
+    brandLink.className = '';
+    brandLink.closest('.button-container').className = '';
   }
 
-  const navSections = nav.querySelector(".nav-sections");
+  const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections
-      .querySelectorAll(":scope .default-content-wrapper > ul > li")
+      .querySelectorAll(':scope .default-content-wrapper > ul > li')
       .forEach((navSection) => {
-        if (navSection.querySelector("ul"))
-          navSection.classList.add("nav-drop");
-        navSection.addEventListener("click", () => {
+        if (navSection.querySelector('ul'))
+          navSection.classList.add('nav-drop');
+        navSection.addEventListener('click', () => {
           if (isDesktop.matches) {
             const expanded =
-              navSection.getAttribute("aria-expanded") === "true";
+              navSection.getAttribute('aria-expanded') === 'true';
             toggleAllNavSections(navSections);
             navSection.setAttribute(
-              "aria-expanded",
-              expanded ? "false" : "true"
+              'aria-expanded',
+              expanded ? 'false' : 'true'
             );
           }
         });
@@ -137,62 +137,62 @@ export default async function decorate(block) {
   }
 
   // hamburger for mobile
-  const hamburger = document.createElement("div");
-  hamburger.classList.add("nav-hamburger");
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
-      <span class="nav-hamburger-icon"></span>
+  const hamburger = document.createElement('div');
+  hamburger.classList.add('nav-hamburger');
+  hamburger.innerHTML = `<button type='button' aria-controls='nav' aria-label='Open navigation'>
+      <span class='nav-hamburger-icon'></span>
     </button>`;
-  hamburger.addEventListener("click", () => toggleMenu(nav, navSections));
+  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
   nav.prepend(hamburger);
-  nav.setAttribute("aria-expanded", "false");
+  nav.setAttribute('aria-expanded', 'false');
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener("change", () =>
+  isDesktop.addEventListener('change', () =>
     toggleMenu(nav, navSections, isDesktop.matches)
   );
 
-  const navWrapper = document.createElement("div");
-  navWrapper.className = "nav-wrapper";
+  const navWrapper = document.createElement('div');
+  navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
   //custom script for dom manipulation in header
-  let header = document.querySelector("header");
+  let header = document.querySelector('header');
 
   if (header) {
     let containers = document.querySelectorAll(
-      ".section.fragment-container.nav-sections"
+      '.section.fragment-container.nav-sections'
     );
 
     containers.forEach(function (container) {
       let defaultContentDivs = container.querySelectorAll(
-        ".default-content-wrapper"
+        '.default-content-wrapper'
       );
 
       // Filter divs that contain <ul><li></li></ul>
-      let filteredDivs = [];
+      const filteredDivs = [];
       defaultContentDivs.forEach(function (div) {
-        let ulElement = div.querySelector("ul");
-        if (ulElement && ulElement.querySelector("li")) {
+        const ulElement = div.querySelector('ul');
+        if (ulElement && ulElement.querySelector('li')) {
           filteredDivs.push(div);
         }
       });
 
       // If we have at least two divs that match the criteria
       if (filteredDivs.length >= 2) {
-        let firstDiv = filteredDivs[0];
+        const firstDiv = filteredDivs[0];
 
         // Ensure the first div has a <ul> element to insert <li> elements into
-        let ulElementInFirstDiv = firstDiv.querySelector("ul");
+        let ulElementInFirstDiv = firstDiv.querySelector('ul');
         if (!ulElementInFirstDiv) {
-          ulElementInFirstDiv = document.createElement("ul");
+          ulElementInFirstDiv = document.createElement('ul');
           firstDiv.appendChild(ulElementInFirstDiv);
         }
 
         // Process divs from the 2nd to the Nth
         for (let i = 1; i < filteredDivs.length; i++) {
-          let currentDiv = filteredDivs[i];
-          let ulElementInCurrentDiv = currentDiv.querySelector("ul");
-          let liElements = ulElementInCurrentDiv.querySelectorAll("li");
+          const currentDiv = filteredDivs[i];
+          const ulElementInCurrentDiv = currentDiv.querySelector('ul');
+          const liElements = ulElementInCurrentDiv.querySelectorAll('li');
 
           // Insert each <li> element into the first div's <ul>
           liElements.forEach(function (li) {
@@ -204,25 +204,25 @@ export default async function decorate(block) {
         }
 
         // Add attributes to all <li> tags inside the first .default-content-wrapper
-        let liElementsInFirstDiv = ulElementInFirstDiv.querySelectorAll("li");
+        const liElementsInFirstDiv = ulElementInFirstDiv.querySelectorAll('li');
         liElementsInFirstDiv.forEach(function (li) {
-          li.classList.add("nav-drop");
-          li.setAttribute("tabindex", "0");
-          li.setAttribute("aria-expanded", "false");
+          li.classList.add('nav-drop');
+          li.setAttribute('tabindex', '0');
+          li.setAttribute('aria-expanded', 'false');
         });
       }
 
       // Find fragment-wrapper divs
-      const fragmentWrapperDivs = container.querySelectorAll(".fragment-wrapper");
+      const fragmentWrapperDivs = container.querySelectorAll('.fragment-wrapper');
       const liElementsInDefaultWrapper = container.querySelectorAll(
-        ".default-content-wrapper li"
+        '.default-content-wrapper li'
       );
 
       // Transfer fragment-wrapper divs to respective li tags
       fragmentWrapperDivs.forEach(function (fragmentWrapper, index) {
         if (liElementsInDefaultWrapper[index]) {
-          const newUl = document.createElement("ul");
-          const newLi = document.createElement("li");
+          const newUl = document.createElement('ul');
+          const newLi = document.createElement('li');
           newLi.appendChild(fragmentWrapper);
           newUl.appendChild(newLi);
           liElementsInDefaultWrapper[index].appendChild(newUl);
@@ -230,6 +230,6 @@ export default async function decorate(block) {
       });
     });
   } else {
-    console.log("No header element found.");
+    console.log('No header element found.');
   }
 }
