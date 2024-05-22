@@ -147,72 +147,74 @@ export default async function decorate(block) {
   navWrapper.append(nav);
   block.append(navWrapper);
    //custom script for dom manipulation in header 
-   let header = document.querySelector('header');
+let header = document.querySelector('header');
 
-   if (header) {
-       let containers = document.querySelectorAll('.section.fragment-container.nav-sections');
+if (header) {
+    let containers = document.querySelectorAll('.section.fragment-container.nav-sections');
 
-       containers.forEach(function(container) {
-           let defaultContentDivs = container.querySelectorAll('.default-content-wrapper');
+    containers.forEach(function(container) {
+        let defaultContentDivs = container.querySelectorAll('.default-content-wrapper');
 
-           // Filter divs that contain <ul><li></li></ul>
-           let filteredDivs = [];
-           defaultContentDivs.forEach(function(div) {
-               let ulElement = div.querySelector('ul');
-               if (ulElement && ulElement.querySelector('li')) {
-                   filteredDivs.push(div);
-               }
-           });
+        // Filter divs that contain <ul><li></li></ul>
+        let filteredDivs = [];
+        defaultContentDivs.forEach(function(div) {
+            let ulElement = div.querySelector('ul');
+            if (ulElement && ulElement.querySelector('li')) {
+                filteredDivs.push(div);
+            }
+        });
 
-           // If we have at least two divs that match the criteria
-           if (filteredDivs.length >= 2) {
-               let firstDiv = filteredDivs[0];
-               let secondDiv = filteredDivs[1];
+        // If we have at least two divs that match the criteria
+        if (filteredDivs.length >= 2) {
+            let firstDiv = filteredDivs[0];
 
-               // Extract <li> elements from the second div
-               let ulElementInSecondDiv = secondDiv.querySelector('ul');
-               let liElements = ulElementInSecondDiv.querySelectorAll('li');
+            // Ensure the first div has a <ul> element to insert <li> elements into
+            let ulElementInFirstDiv = firstDiv.querySelector('ul');
+            if (!ulElementInFirstDiv) {
+                ulElementInFirstDiv = document.createElement('ul');
+                firstDiv.appendChild(ulElementInFirstDiv);
+            }
 
-               // Ensure the first div has a <ul> element to insert <li> elements into
-               let ulElementInFirstDiv = firstDiv.querySelector('ul');
-               if (!ulElementInFirstDiv) {
-                   ulElementInFirstDiv = document.createElement('ul');
-                   firstDiv.appendChild(ulElementInFirstDiv);
-               }
+            // Process divs from the 2nd to the Nth
+            for (let i = 1; i < filteredDivs.length; i++) {
+                let currentDiv = filteredDivs[i];
+                let ulElementInCurrentDiv = currentDiv.querySelector('ul');
+                let liElements = ulElementInCurrentDiv.querySelectorAll('li');
 
-               // Insert each <li> element into the first div's <ul>
-               liElements.forEach(function(li) {
-                   ulElementInFirstDiv.appendChild(li);
-               });
+                // Insert each <li> element into the first div's <ul>
+                liElements.forEach(function(li) {
+                    ulElementInFirstDiv.appendChild(li);
+                });
 
-               // Remove the second div after transferring the <li> elements
-               secondDiv.remove();
+                // Remove the current div after transferring the <li> elements
+                currentDiv.remove();
+            }
 
-               // Add attributes to all <li> tags inside the first .default-content-wrapper
-               let liElementsInFirstDiv = ulElementInFirstDiv.querySelectorAll('li');
-               liElementsInFirstDiv.forEach(function(li) {
-                   li.classList.add('nav-drop');
-                   li.setAttribute('tabindex', '0');
-                   li.setAttribute('aria-expanded', 'false');
-               });
-           }
+            // Add attributes to all <li> tags inside the first .default-content-wrapper
+            let liElementsInFirstDiv = ulElementInFirstDiv.querySelectorAll('li');
+            liElementsInFirstDiv.forEach(function(li) {
+                li.classList.add('nav-drop');
+                li.setAttribute('tabindex', '0');
+                li.setAttribute('aria-expanded', 'false');
+            });
+        }
 
-           // Find fragment-wrapper divs
-           let fragmentWrapperDivs = container.querySelectorAll('.fragment-wrapper');
-           let liElementsInDefaultWrapper = container.querySelectorAll('.default-content-wrapper li');
+        // Find fragment-wrapper divs
+        let fragmentWrapperDivs = container.querySelectorAll('.fragment-wrapper');
+        let liElementsInDefaultWrapper = container.querySelectorAll('.default-content-wrapper li');
 
-           // Transfer fragment-wrapper divs to respective li tags
-           fragmentWrapperDivs.forEach(function(fragmentWrapper, index) {
-               if (liElementsInDefaultWrapper[index]) {
-                   let newUl = document.createElement('ul');
-                   let newLi = document.createElement('li');
-                   newLi.appendChild(fragmentWrapper);
-                   newUl.appendChild(newLi);
-                   liElementsInDefaultWrapper[index].appendChild(newUl);
-               }
-           });
-       });
-   } else {
-       console.log('No header element found.');
-   }
+        // Transfer fragment-wrapper divs to respective li tags
+        fragmentWrapperDivs.forEach(function(fragmentWrapper, index) {
+            if (liElementsInDefaultWrapper[index]) {
+                let newUl = document.createElement('ul');
+                let newLi = document.createElement('li');
+                newLi.appendChild(fragmentWrapper);
+                newUl.appendChild(newLi);
+                liElementsInDefaultWrapper[index].appendChild(newUl);
+            }
+        });
+    });
+} else {
+    console.log('No header element found.');
+}
 }
