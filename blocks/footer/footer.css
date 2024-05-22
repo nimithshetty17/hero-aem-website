@@ -1,12 +1,13 @@
 footer {
-  padding: 71px 15px 0;
-  @media screen and (min-width: 768px) {
-    padding: 66px 70px 0;
-  }
-  background-color: var(--hero-dark-grey);
-  font-size: var(--body-font-size-s);
+    padding: 71px 15px 0;
+    background-color: var(--hero-dark-grey);
+    font-size: var(--body-font-size-s);
+    
+    @media (width >= 768px) {
+        padding: 66px 70px 0;
+    }
 }
 
 footer .footer p {
-  margin: 0;
+    margin: 0;
 }
