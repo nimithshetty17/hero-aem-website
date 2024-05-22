@@ -41,6 +41,10 @@
 .footer-links > div:nth-of-type(2) > div > p {
     display: flex;
     align-items: center;
+
+    picture {
+        display: inline-flex;
+    }
 }
 
 .footer-links > div:first-of-type > div {
@@ -76,10 +80,18 @@
 
 .footer-links > div:nth-of-type(2) > div:first-of-type > p {
     gap: 16px;
+
+    @media (width <= 767px) {
+        gap: 20px;
+    }
 }
 
 .footer-links > div:nth-of-type(2) > div:last-of-type > p {
     gap: 30px;
+    
+    @media (width <= 767px) {
+        gap: 38px;
+    }
 }
 
 .footer-links > div:last-of-type > div {
