@@ -26,6 +26,7 @@
         line-height: 1.2;
         color: white;
         padding-bottom: 24px;
+        word-wrap: break-word;
         @media (max-width: 767px) {
             font-size: 24px;
         }
@@ -49,6 +50,7 @@
 
 .footer-links > div:nth-of-type(2) {
     padding: 55px 0 48px;
+    gap: 16px;
     @media (max-width: 767px) {
         padding: 30px 0 26px;
         gap: 34px;
