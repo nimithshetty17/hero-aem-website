@@ -92,129 +92,144 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  */
 export default async function decorate(block) {
   // load nav as fragment
-  const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const navMeta = getMetadata("nav");
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : "/nav";
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
-  block.textContent = '';
-  const nav = document.createElement('nav');
-  nav.id = 'nav';
+  block.textContent = "";
+  const nav = document.createElement("nav");
+  nav.id = "nav";
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
 
-  const classes = ['brand', 'sections', 'tools'];
+  const classes = ["brand", "sections", "tools"];
   classes.forEach((c, i) => {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
   });
 
-  const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
+  const navBrand = nav.querySelector(".nav-brand");
+  const brandLink = navBrand.querySelector(".button");
   if (brandLink) {
-    brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+    brandLink.className = "";
+    brandLink.closest(".button-container").className = "";
   }
 
-  const navSections = nav.querySelector('.nav-sections');
+  const navSections = nav.querySelector(".nav-sections");
   if (navSections) {
-    navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
-      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('click', () => {
-        if (isDesktop.matches) {
-          const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          toggleAllNavSections(navSections);
-          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        }
+    navSections
+      .querySelectorAll(":scope .default-content-wrapper > ul > li")
+      .forEach((navSection) => {
+        if (navSection.querySelector("ul"))
+          navSection.classList.add("nav-drop");
+        navSection.addEventListener("click", () => {
+          if (isDesktop.matches) {
+            const expanded =
+              navSection.getAttribute("aria-expanded") === "true";
+            toggleAllNavSections(navSections);
+            navSection.setAttribute(
+              "aria-expanded",
+              expanded ? "false" : "true"
+            );
+          }
+        });
       });
-    });
   }
 
   // hamburger for mobile
-  const hamburger = document.createElement('div');
-  hamburger.classList.add('nav-hamburger');
+  const hamburger = document.createElement("div");
+  hamburger.classList.add("nav-hamburger");
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
     </button>`;
-  hamburger.addEventListener('click', () => toggleMenu(nav, navSections));
+  hamburger.addEventListener("click", () => toggleMenu(nav, navSections));
   nav.prepend(hamburger);
-  nav.setAttribute('aria-expanded', 'false');
+  nav.setAttribute("aria-expanded", "false");
   // prevent mobile nav behavior on window resize
   toggleMenu(nav, navSections, isDesktop.matches);
-  isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+  isDesktop.addEventListener("change", () =>
+    toggleMenu(nav, navSections, isDesktop.matches)
+  );
 
-  const navWrapper = document.createElement('div');
-  navWrapper.className = 'nav-wrapper';
+  const navWrapper = document.createElement("div");
+  navWrapper.className = "nav-wrapper";
   navWrapper.append(nav);
   block.append(navWrapper);
-   //custom script for dom manipulation in header 
-let header = document.querySelector('header');
+  //custom script for dom manipulation in header
+  let header = document.querySelector("header");
 
-if (header) {
-    let containers = document.querySelectorAll('.section.fragment-container.nav-sections');
+  if (header) {
+    let containers = document.querySelectorAll(
+      ".section.fragment-container.nav-sections"
+    );
 
-    containers.forEach(function(container) {
-        let defaultContentDivs = container.querySelectorAll('.default-content-wrapper');
+    containers.forEach(function (container) {
+      let defaultContentDivs = container.querySelectorAll(
+        ".default-content-wrapper"
+      );
 
-        // Filter divs that contain <ul><li></li></ul>
-        let filteredDivs = [];
-        defaultContentDivs.forEach(function(div) {
-            let ulElement = div.querySelector('ul');
-            if (ulElement && ulElement.querySelector('li')) {
-                filteredDivs.push(div);
-            }
-        });
+      // Filter divs that contain <ul><li></li></ul>
+      let filteredDivs = [];
+      defaultContentDivs.forEach(function (div) {
+        let ulElement = div.querySelector("ul");
+        if (ulElement && ulElement.querySelector("li")) {
+          filteredDivs.push(div);
+        }
+      });
 
-        // If we have at least two divs that match the criteria
-        if (filteredDivs.length >= 2) {
-            let firstDiv = filteredDivs[0];
+      // If we have at least two divs that match the criteria
+      if (filteredDivs.length >= 2) {
+        let firstDiv = filteredDivs[0];
 
-            // Ensure the first div has a <ul> element to insert <li> elements into
-            let ulElementInFirstDiv = firstDiv.querySelector('ul');
-            if (!ulElementInFirstDiv) {
-                ulElementInFirstDiv = document.createElement('ul');
-                firstDiv.appendChild(ulElementInFirstDiv);
-            }
-
-            // Process divs from the 2nd to the Nth
-            for (let i = 1; i < filteredDivs.length; i++) {
-                let currentDiv = filteredDivs[i];
-                let ulElementInCurrentDiv = currentDiv.querySelector('ul');
-                let liElements = ulElementInCurrentDiv.querySelectorAll('li');
-
-                // Insert each <li> element into the first div's <ul>
-                liElements.forEach(function(li) {
-                    ulElementInFirstDiv.appendChild(li);
-                });
-
-                // Remove the current div after transferring the <li> elements
-                currentDiv.remove();
-            }
-
-            // Add attributes to all <li> tags inside the first .default-content-wrapper
-            let liElementsInFirstDiv = ulElementInFirstDiv.querySelectorAll('li');
-            liElementsInFirstDiv.forEach(function(li) {
-                li.classList.add('nav-drop');
-                li.setAttribute('tabindex', '0');
-                li.setAttribute('aria-expanded', 'false');
-            });
+        // Ensure the first div has a <ul> element to insert <li> elements into
+        let ulElementInFirstDiv = firstDiv.querySelector("ul");
+        if (!ulElementInFirstDiv) {
+          ulElementInFirstDiv = document.createElement("ul");
+          firstDiv.appendChild(ulElementInFirstDiv);
         }
 
-        // Find fragment-wrapper divs
-        let fragmentWrapperDivs = container.querySelectorAll('.fragment-wrapper');
-        let liElementsInDefaultWrapper = container.querySelectorAll('.default-content-wrapper li');
+        // Process divs from the 2nd to the Nth
+        for (let i = 1; i < filteredDivs.length; i++) {
+          let currentDiv = filteredDivs[i];
+          let ulElementInCurrentDiv = currentDiv.querySelector("ul");
+          let liElements = ulElementInCurrentDiv.querySelectorAll("li");
 
-        // Transfer fragment-wrapper divs to respective li tags
-        fragmentWrapperDivs.forEach(function(fragmentWrapper, index) {
-            if (liElementsInDefaultWrapper[index]) {
-                let newUl = document.createElement('ul');
-                let newLi = document.createElement('li');
-                newLi.appendChild(fragmentWrapper);
-                newUl.appendChild(newLi);
-                liElementsInDefaultWrapper[index].appendChild(newUl);
-            }
+          // Insert each <li> element into the first div's <ul>
+          liElements.forEach(function (li) {
+            ulElementInFirstDiv.appendChild(li);
+          });
+
+          // Remove the current div after transferring the <li> elements
+          currentDiv.remove();
+        }
+
+        // Add attributes to all <li> tags inside the first .default-content-wrapper
+        let liElementsInFirstDiv = ulElementInFirstDiv.querySelectorAll("li");
+        liElementsInFirstDiv.forEach(function (li) {
+          li.classList.add("nav-drop");
+          li.setAttribute("tabindex", "0");
+          li.setAttribute("aria-expanded", "false");
         });
+      }
+
+      // Find fragment-wrapper divs
+      const fragmentWrapperDivs = container.querySelectorAll(".fragment-wrapper");
+      const liElementsInDefaultWrapper = container.querySelectorAll(
+        ".default-content-wrapper li"
+      );
+
+      // Transfer fragment-wrapper divs to respective li tags
+      fragmentWrapperDivs.forEach(function (fragmentWrapper, index) {
+        if (liElementsInDefaultWrapper[index]) {
+          const newUl = document.createElement("ul");
+          const newLi = document.createElement("li");
+          newLi.appendChild(fragmentWrapper);
+          newUl.appendChild(newLi);
+          liElementsInDefaultWrapper[index].appendChild(newUl);
+        }
+      });
     });
-} else {
-    console.log('No header element found.');
-}
+  } else {
+    console.log("No header element found.");
+  }
 }
