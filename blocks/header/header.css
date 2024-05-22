@@ -267,6 +267,9 @@ header nav .nav-sections ul > li > ul > li {
   }
 }
 
+header nav .nav-sections .default-content-wrapper{
+  display: flex;
+}
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
