@@ -271,3 +271,57 @@ header nav .nav-sections .default-content-wrapper{
 header nav .nav-tools {
   grid-area: tools;
 }
+
+.nav-sections .scooter-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.nav-sections .scooter-left {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.nav-sections .scooter-item {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 5px; /* Reduced padding */
+  text-align: center;
+}
+
+.nav-sections .scooter-item img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  max-height: 160px;
+}
+
+.nav-sections .scooter-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.nav-sections .scooter-right img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 800px) {
+  .nav-sections .scooter-container {
+      flex-direction: column;
+  }
+
+  .nav-sections .scooter-left, .nav-sections .scooter-right {
+      width: 100%;
+  }
+
+  .nav-sections .scooter-item {
+      width: 100%;
+  }
+}

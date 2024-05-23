@@ -1,5 +1,6 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import transformDOMForScooter from '../../scripts/helper-scripts/scooterDOMTransform.js'
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -232,4 +233,6 @@ export default async function decorate(block) {
   } else {
     console.log('No header element found.');
   }
+//function to transform the dom structure for scooters
+transformDOMForScooter();
 }
