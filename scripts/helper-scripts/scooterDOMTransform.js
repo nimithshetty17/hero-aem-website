@@ -1,7 +1,7 @@
 // Function to transform the provided HTML structure to v1scooter structure
 export default function transformDOMForScooter() {
   const fragmentWrappers = document.querySelectorAll('.fragment-wrapper');
-  fragmentWrappers.forEach(fragmentWrapper => {
+  fragmentWrappers.forEach((fragmentWrapper) => {
     const leftSideDataDiv = fragmentWrapper.querySelector('.scooter-left-side-data');
     const rightSideDataDiv = fragmentWrapper.querySelector('.scooter-right-side-data');
 
@@ -35,14 +35,14 @@ export default function transformDOMForScooter() {
     rightContainer.classList.add('scooter-right');
 
     // Process each default-content-wrapper on the left side
-    leftContentWrappers.forEach(wrapper => {
+    leftContentWrappers.forEach((wrapper) => {
       const paragraphs = wrapper.querySelectorAll('p');
       if (paragraphs.length === 0) {
         console.error('No paragraphs found in wrapper');
         return;
       }
 
-      paragraphs.forEach(paragraph => {
+      paragraphs.forEach((paragraph) => {
         const picture = paragraph.querySelector('picture');
         if (!picture) {
           console.error('Picture not found in paragraph');
@@ -56,7 +56,7 @@ export default function transformDOMForScooter() {
         }
 
         // Extract text without <br> tags
-        const text = paragraph.innerText.trim().split('\n').filter(line => line);
+        const text = paragraph.innerText.trim().split('\n').filter((line) => line);
 
         // Left side scooters
         const scooterItem = document.createElement('div');
@@ -72,7 +72,6 @@ export default function transformDOMForScooter() {
         textElement.innerHTML = text.join(' ');
         scooterItem.appendChild(imgElement);
         scooterItem.appendChild(textElement);
-        // Create anchor tag 
         const anchor = wrapper.querySelector('a');
         if (anchor) {
           const anchorElement = document.createElement('a');
