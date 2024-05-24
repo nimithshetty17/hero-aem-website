@@ -298,7 +298,7 @@ header nav .nav-tools {
   font-family: var(--font-high-speed);
   font-size: var(--font-size32);
   font-weight: var(--font-weight-400);
-  text-align: center;
+  text-align: left;
   line-height: inherit;
   color: rgba(0, 0, 0, 0.5);
 }
