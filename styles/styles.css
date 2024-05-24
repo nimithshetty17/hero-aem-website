@@ -211,20 +211,6 @@ main .section.highlight {
 
 /* adding custom root style  */
 :root {
-  --font-tstar-regular: "tstar-regular";
-  --font-tstar-medium: "tstar-medium";
-  --font-tstar-bold: "tstar-bold";
-  --font-tstar-heavy: "tstar-heavy";
-  --font-transducer-regular: "transducer-regular";
-  --font-transducer-medium: "transducer-medium";
-  --font-transducer-bold: "transducer-bold";
-  --font-robotocondensed-regular: "robotocondensed-regular";
-  --font-robotocondensed-bold: "robotocondensed-bold";
-  --font-transducer: "transducer",sans-serif;
-  --font-transducer-condensed: "transducer-condensed",sans-serif;
-  --font-transducer-extended: "transducer-extended",sans-serif;
-  --font-transducer-test-regular: "transducer-test-regular";
-  --font-transducer-test-medium: "transducer-test-medium";
   --font-weight-300: 300;
   --font-weight-400: 400;
   --font-weight-500: 500;

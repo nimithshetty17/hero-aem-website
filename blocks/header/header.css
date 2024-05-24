@@ -295,6 +295,12 @@ header nav .nav-tools {
   width: 100%;
   margin: 0 0 20px 0;
   padding-left: 50px;
+  font-family: var(--font-high-speed);
+  font-size: var(--font-size32);
+  font-weight: var(--font-weight-400);
+  text-align: center;
+  line-height: inherit;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .nav-sections .scooter-item {
