@@ -15,7 +15,7 @@ header nav {
   align-items: center;
   gap: 0 2em;
   margin: auto;
-  max-width: 1264px;
+  max-width: 1440px;
   height: var(--nav-height);
   padding: 0 1rem;
   font-family: var(--body-font-family);
@@ -32,7 +32,7 @@ header nav[aria-expanded="true"] {
 
 @media (width >= 600px) {
   header nav {
-    padding: 0 2rem;
+    padding: 0 2.5rem;
   }
 }
 
@@ -244,7 +244,7 @@ header nav .nav-sections ul > li > ul > li {
     width: 100vw;
     margin-top: 12px;
     padding: 1em;
-    background-color: var(--light-color);
+    background-color: white;
     white-space: initial;
   }
 
@@ -294,10 +294,11 @@ header nav .nav-tools {
   text-align: left;
   width: 100%;
   margin: 0 0 20px 0;
+  padding-left: 50px;
 }
 
 .nav-sections .scooter-item {
-  width: 50%;
+  max-width: 300px;
   box-sizing: border-box;
   padding: 5px;
   text-align: center;
@@ -316,7 +317,8 @@ header nav .nav-tools {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 10px;
+  padding: 24px;
+  background: rgba(48, 48, 48, 0.05);
 }
 
 .nav-sections .scooter-right img {
