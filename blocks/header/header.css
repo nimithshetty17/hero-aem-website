@@ -298,7 +298,7 @@ header nav .nav-tools {
 }
 
 .nav-sections .scooter-item {
-  max-width: 300px;
+  width: 300px;
   box-sizing: border-box;
   padding: 5px;
   text-align: center;
