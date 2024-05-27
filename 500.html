@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<!-- This is the same as 404.html, except for the title and the error code. -->
+<head>
+  <title>Internal server error</title>
+  <script type="text/javascript">
+    window.isErrorPage = true;
+    window.errorCode = '500';
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Internal server error">
+  <script src="/scripts/scripts.js" type="module" crossorigin="use-credentials"></script>
+  <script type="module">
+    import { sampleRUM } from '/scripts/lib-franklin.js';
+
+    window.addEventListener('load', async () => {
+      const resp = await fetch(
+              '500.plain.html',
+              window.location.pathname.endsWith('/500') ? { cache: 'reload' } : {},
+      );
+
+      if (resp.ok) {
+        const html = await resp.text();
+        const errorSection = document.querySelector('.error');
+
+        errorSection.innerHTML = html;
+      }
+
+      sampleRUM('500', {
+        source: document.referrer,
+        target: window.location.href
+      });
+    });
+  </script>
+  <link rel="stylesheet" href="/styles/styles.css"/>
+  <link rel="stylesheet" href="/styles/lazy-styles.css"/>
+</head>
+
+<body>
+<header></header>
+<main>
+  <section class="section error"></section>
+</main>
+<footer></footer>
+</body>
+
+</html>
