@@ -85,12 +85,12 @@
 }
 
 @font-face {
-  font-family: fa-brands-400;
+  font-family: 'fa-brands-400';
   src: url('../fonts/monument/fa-brands-400.woff2') format('truetype');
 }
 
 @font-face {
-  font-family: fa-solid-900;
+  font-family: 'fa-solid-900';
   src: url('../fonts/monument/fa-solid-900.woff2') format('truetype');
 }
 
@@ -135,12 +135,12 @@
 }
 
 @font-face {
-  font-family: inter-600;
+  font-family: 'inter-600';
   src: url('../fonts/inter/Inter-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: inter-400;
+  font-family: 'inter-400';
   src: url('../fonts/inter/Inter-Regular.ttf') format('truetype');
 }
 
@@ -163,7 +163,7 @@
   --font-fjalla-one: 'fjalla-one';
   --font-fa-brands-400: 'fa-brands-400';
   --font-fa-solid-900: 'fa-solid-400';
-  --font-monumentExtended-ultrabold: 'MonumentExtended-Ultrabold';
+  --font-monument-extended-ultrabold: 'MonumentExtended-Ultrabold';
   --font-robotocondensed-bold: 'robotocondensed-bold';
   --font-robotocondensed-regular: 'robotocondensed-regular';
 }
