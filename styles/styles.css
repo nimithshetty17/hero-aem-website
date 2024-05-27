@@ -135,10 +135,10 @@
     --text-color-danger-red: red;
     --text-color-grey: #666;
     --text-color-lightgrey: #757575;
-    --text-color-grey-blur: rgba(255, 255, 255, 50%) !important;
+    --text-color-grey-blur: rgba(255 255 255 50%) !important;
     --text-color-white: #fff !important;
     --text-color-blue: #009fda;
-    --text-color-grey-white: rgba(255, 255, 255, 50%);
+    --text-color-grey-white: rgba(255 255 255 50%);
     --text-color-danger-red-2: #df0000;
     --text-color-info: #0086da;
     --text-color-grey-label: #a5a5a5;
