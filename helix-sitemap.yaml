@@ -1,0 +1,5 @@
+sitemaps:
+   insights:
+     origin: https://www.heromotocorp.com
+     source: /query-index.json
+     destination: 

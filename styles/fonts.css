@@ -1,21 +1,44 @@
 @font-face {
-  font-family: "tstar-regular";
-  src: url("../fonts/tstar/TSTAR-PRO-Regular.ttf") format("truetype"), url("../fonts/tstar/TSTAR-PRO-Regular.woff") format("woff"), url("../fonts/tstar/TSTAR-PRO-Regular.woff2") format("woff2"), url("../fonts/tstar/TSTAR-PRO-Regular.eot") format("eot");
+  font-family: tstar-regular;
+  src: url('../fonts/tstar/TSTAR-PRO-Regular.ttf') format('truetype'), url('../fonts/tstar/TSTAR-PRO-Regular.woff') format('woff'), url('../fonts/tstar/TSTAR-PRO-Regular.woff2') format('woff2'), url('../fonts/tstar/TSTAR-PRO-Regular.eot') format('eot');
   font-display: swap;
 }
 
 /* T-star-Medium */
 @font-face {
-  font-family: "tstar-medium";
-  src: url("../fonts/tstar/TSTAR-PRO-Medium.ttf") format("truetype"), url("../fonts/tstar/TSTAR-PRO-Medium.woff") format("woff"), url("../fonts/tstar/TSTAR-PRO-Medium.woff2") format("woff2"), url("../fonts/tstar/TSTAR-PRO-Medium.eot") format("eot");
+  font-family: tstar-medium;
+  src: url('../fonts/tstar/TSTAR-PRO-Medium.ttf') format('truetype'), url('../fonts/tstar/TSTAR-PRO-Medium.woff') format('woff'), url('../fonts/tstar/TSTAR-PRO-Medium.woff2') format('woff2'), url('../fonts/tstar/TSTAR-PRO-Medium.eot') format('eot');
   font-display: swap;
 }
 
 /* T-star-Bold */
 @font-face {
-  font-family: "tstar-bold";
-  src: url("../fonts/tstar/TSTAR-PRO-Bold.ttf") format("truetype"), url("../fonts/tstar/TSTAR-PRO-Bold.woff") format("woff"), url("../fonts/tstar/TSTAR-PRO-Bold.woff2") format("woff2"), url("../fonts/tstar/TSTAR-PRO-Bold.eot") format("eot");
+  font-family: tstar-bold;
+  src: url('../fonts/tstar/TSTAR-PRO-Bold.ttf') format('truetype'), url('../fonts/tstar/TSTAR-PRO-Bold.woff') format('woff'), url('../fonts/tstar/TSTAR-PRO-Bold.woff2') format('woff2'), url('../fonts/tstar/TSTAR-PRO-Bold.eot') format('eot');
   font-display: swap;
+}
+
+/* T-star-Heavy */
+@font-face {
+  font-family: tstar-heavy;
+  src: url('../fonts/tstar/T-StarPro-Heavy.ttf') format('truetype'),
+    url('../fonts/tstar/T-StarPro-Heavy.woff') format('woff'),
+    url('../fonts/tstar/T-StarPro-Heavy.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: high-speed;
+  src: url('../fonts/high-speed/highspeed.ttf') format('truetype'), url('../fonts/high-speed/highspeed.woff') format('woff'), url('../fonts/high-speed/highspeed.woff2') format('woff2'), url('../fonts/high-speed/highspeed.otf') format('otf');
+  font-display: swap;
+}
+
+:root {
+  --font-tstar-regular: 'tstar-regular';
+  --font-tstar-medium: 'tstar-medium';
+  --font-tstar-bold: 'tstar-bold';
+  --font-tstar-heavy: 'tstar-heavy';
+  --font-high-speed: 'high-speed';
 }
 
 /* T-star-Heavy */
