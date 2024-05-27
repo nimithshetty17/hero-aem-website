@@ -365,3 +365,50 @@ header nav .nav-tools {
       width: 100%;
   }
 }
+/* css for motorcycle  */
+.motorcycle-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.motorcycle-category {
+  width: 30%;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-right-color: 1px solid grey;
+  box-sizing: border-box;
+}
+
+.motorcycle-category h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.motorcycle-models {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.motorcycle-model {
+  width: 48%;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.motorcycle-model img {
+  width: 100%;
+  height: auto;
+}
+
+.motorcycle-model p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 8px;
+  text-transform: uppercase;
+}

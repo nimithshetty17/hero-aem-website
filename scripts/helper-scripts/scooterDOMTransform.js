@@ -1,5 +1,5 @@
 // Function to transform the provided HTML structure to v1scooter structure
-export default function transformDOMForScooter() {
+export default function scooterDOMTransform() {
   const fragmentWrappers = document.querySelectorAll('.fragment-wrapper');
   fragmentWrappers.forEach((fragmentWrapper) => {
     const leftSideDataDiv = fragmentWrapper.querySelector('.scooter-left-side-data');

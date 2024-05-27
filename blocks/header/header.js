@@ -1,6 +1,7 @@
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import transformDOMForScooter from '../../scripts/helper-scripts/scooterDOMTransform.js'
+import scooterDOMTransform from '../../scripts/helper-scripts/scooterDOMTransform.js';
+import motorcycleDOMTransform from '../../scripts/helper-scripts/motorcycleDOMTransform.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -121,8 +122,9 @@ export default async function decorate(block) {
     navSections
       .querySelectorAll(':scope .default-content-wrapper > ul > li')
       .forEach((navSection) => {
-        if (navSection.querySelector('ul'))
+        if (navSection.querySelector('ul')){
           navSection.classList.add('nav-drop');
+        }
         navSection.addEventListener('click', () => {
           if (isDesktop.matches) {
             const expanded =
@@ -234,5 +236,7 @@ export default async function decorate(block) {
     console.log('No header element found.');
   }
 //function to transform the dom structure for scooters
-transformDOMForScooter();
+scooterDOMTransform();
+//function to transform the dom structure for motorcycle
+motorcycleDOMTransform();
 }
