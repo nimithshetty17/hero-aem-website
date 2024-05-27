@@ -15,7 +15,7 @@ header nav {
   align-items: center;
   gap: 0 2em;
   margin: auto;
-  max-width: 1264px;
+  max-width: 1440px;
   height: var(--nav-height);
   padding: 0 1rem;
   font-family: var(--body-font-family);
@@ -32,7 +32,7 @@ header nav[aria-expanded="true"] {
 
 @media (width >= 600px) {
   header nav {
-    padding: 0 2rem;
+    padding: 0 2.5rem;
   }
 }
 
@@ -198,13 +198,11 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections .nav-drop {
-    position: relative;
     padding-right: 16px;
     cursor: pointer;
   }
 
   header nav .nav-sections .nav-drop::after {
-    content: '';
     display: inline-block;
     position: absolute;
     top: .5em;
@@ -227,33 +225,34 @@ header nav .nav-sections ul > li > ul > li {
     display: flex;
     gap: 2em;
     margin: 0;
-    font-size: var(--body-font-size-xs);
+    font-size: var(--font-size14);
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
-    position: relative;
-    font-weight: 500;
+    font-weight: 400;
   }
 
+  header nav .nav-sections .default-content-wrapper > ul > li:first-child
+  {
+  background: linear-gradient(to right, var(--text-color-danger-red) 5%, var(--text-color-black) 50%);
+  }
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: none;
-    position: relative;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded="true"] > ul {
     display: block;
     position: absolute;
     left: -1em;
-    width: 200px;
+    width: 100vw;
     margin-top: 12px;
     padding: 1em;
-    background-color: var(--light-color);
+    background-color: white;
     white-space: initial;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
-    content: '';
     position: absolute;
     top: -8px;
     left: 8px;
@@ -269,7 +268,151 @@ header nav .nav-sections ul > li > ul > li {
   }
 }
 
+header nav .nav-sections .default-content-wrapper{
+  display: flex;
+}
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+.nav-sections .fragment-wrapper{
+  max-height: 450px;
+  overflow-y: scroll;
+}
+.nav-sections .scooter-container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.nav-sections .scooter-left {
+  flex: 3;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.nav-sections .scooter-left h3 {
+  text-align: left;
+  width: 100%;
+  margin: 0 0 20px 0;
+  padding-left: 50px;
+  font-family: var(--font-high-speed);
+  font-size: var(--font-size32);
+  font-weight: var(--font-weight-400);
+  text-align: left;
+  line-height: inherit;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.nav-sections .scooter-item {
+  width: 290px;
+  box-sizing: border-box;
+  padding: 5px;
+  text-align: center;
+}
+
+.nav-sections .scooter-item img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  max-height: 160px;
+}
+
+.nav-sections .scooter-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+  background: rgba(48, 48, 48, 0.05);
+}
+
+.nav-sections .scooter-right img {
+  width: 100%;
+  height: auto;
+}
+
+.nav-sections .know-more-button {
+  margin-top: 10px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff0000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.nav-sections .scooter-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+@media (max-width: 800px) {
+  .nav-sections .scooter-container {
+      flex-direction: column;
+  }
+
+  .nav-sections .scooter-left, .nav-sections .scooter-right {
+      width: 100%;
+  }
+
+  .nav-sections .scooter-item {
+      width: 100%;
+  }
+}
+/* css for motorcycle  */
+.motorcycle-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+.motorcycle-category {
+  width: 30%;
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-right-color: 1px solid grey;
+  box-sizing: border-box;
+}
+
+.motorcycle-category h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.motorcycle-models {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.motorcycle-model {
+  width: 48%;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.motorcycle-model img {
+  width: 100%;
+  height: auto;
+}
+
+.motorcycle-model p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 8px;
+  text-transform: uppercase;
 }
