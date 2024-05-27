@@ -225,14 +225,18 @@ header nav .nav-sections ul > li > ul > li {
     display: flex;
     gap: 2em;
     margin: 0;
-    font-size: var(--body-font-size-xs);
+    font-size: var(--font-size14);
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
     flex: 0 1 auto;
-    font-weight: 500;
+    font-weight: 400;
   }
 
+  header nav .nav-sections .default-content-wrapper > ul > li:first-child
+  {
+  background: linear-gradient(to right, var(--text-color-danger-red) 5%, var(--text-color-black) 50%);
+  }
   header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: none;
   }
