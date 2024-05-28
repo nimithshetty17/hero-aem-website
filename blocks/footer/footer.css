@@ -1,7 +1,6 @@
 footer {
+    background-color: var(--bg-color-secondarygrey);
     padding: 71px 15px 0;
-    background-color: var(--hero-dark-grey);
-    font-size: var(--body-font-size-s);
     
     @media (width >= 768px) {
         padding: 66px 70px 0;
