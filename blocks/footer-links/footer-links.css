@@ -60,6 +60,7 @@
         color: var(--text-color-white);
         padding-bottom: 24px;
         word-wrap: break-word;
+        
         @media (width <= 767px) {
             font-size: var(--font-size24);
         }
